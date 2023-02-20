@@ -1,0 +1,36 @@
+---
+- name: "Play #1 - Configured port descriptions based on CDP neighbors"
+  hosts: device_roles_router
+
+  tasks:
+    - name: “Gather IOS_Facts"
+      cisco.ios.ios_facts:
+        gather_subset:
+          - all
+
+    # - name: Create raw JSON
+    #   copy: 
+    #     content: | 
+    #       {{ ansible_facts | to_nice_json }}
+    #     dest: outputs/{{ inventory_hostname }}_IOS_Facts.json
+
+    # - name: Print net_neighbors
+    #   debug:
+    #     msg: "{{ ansible_facts.net_neighbors }}"
+
+    # - name: show templating results
+    #   debug:
+    #     msg: "{{ lookup('template', '../templates/cdp-desc-config.j2') }}"
+
+    - name: Set descriptions based on net_neighbor output
+      cisco.ios.ios_config:
+        src: "../templates/cdp-desc-config.j2"
+        save_when: changed
+      notify: config_changed
+      register: cli_result
+
+  handlers:
+    - name: "HANDLER 1: Display devices that were modified"
+      listen: config_changed
+      debug:
+        msg: "{{ cli_result.commands }}"

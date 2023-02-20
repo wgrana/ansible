@@ -1,0 +1,6 @@
+{% for interface in ansible_facts.net_neighbors %}
+interface {{ interface }}
+ {% for dictionary in ansible_facts.net_neighbors[interface] %}
+ description Connection to {{ dictionary['host'] }} {{ dictionary['port'] }}
+{% endfor %} 
+{% endfor %} 

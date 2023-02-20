@@ -1,0 +1,33 @@
+---
+- name: "Play #1 - Enable all ports on the device"
+  hosts: device_roles_router
+
+  tasks:
+    - name: “Gather IOS_Facts"
+      cisco.ios.ios_facts:
+        gather_subset:
+          - all
+
+    # - name: Create raw JSON
+    #   copy: 
+    #     content: | 
+    #       {{ ansible_facts | to_nice_json }}
+    #     dest: outputs/{{ inventory_hostname }}_IOS_Facts.json
+
+    - name: Enable all available ports, if the port is not already up
+      cisco.ios.ios_config:
+        lines:
+          - no shutdown
+        parents:
+          - "interface {{item.key}}"
+        save_when: changed
+      with_dict: "{{ ansible_facts.net_interfaces }}"
+      when: item.value.operstatus != "up"
+      notify: config_changed
+      register: cli_result
+
+  handlers:
+    - name: "HANDLER 1: Display devices that were modified"
+      listen: config_changed
+      debug:
+        msg: "{{ cli_result.commands }}"

@@ -1,0 +1,96 @@
+{
+    "net_all_ipv4_addresses": [
+        "192.168.1.203"
+    ],
+    "net_all_ipv6_addresses": [],
+    "net_api": "cliconf",
+    "net_config": "Building configuration...\n\nCurrent configuration : 1240 bytes\n!\n! Last configuration change at 22:29:52 UTC Mon Feb 20 2023 by cisco\n!\nversion 15.4\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nno service password-encryption\n!\nhostname SFO-R\n!\nboot-start-marker\nboot-end-marker\n!\naqm-register-fnf\n!\nvrf definition MGMT\n !\n address-family ipv4\n exit-address-family\n!\n!\nno aaa new-model\nmmi polling-interval 60\nno mmi auto-configure\nno mmi pvc\nmmi snmp-timeout 180\n!\n!\n!\n!\n!\n!\n!\n!\n\n\n!\n!\n!\n!\nip domain name willgrana.com\nip cef\nno ipv6 cef\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n!\nusername cisco privilege 15 password 0 cisco\n!\nredundancy\n!\n!\n! \n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ninterface Ethernet0/0\n description Connection to Switch Ethernet0/3\n vrf forwarding MGMT\n ip address 192.168.1.203 255.255.255.0\n!\ninterface Ethernet0/1\n no ip address\n shutdown\n!\ninterface Ethernet0/2\n no ip address\n shutdown\n!\ninterface Ethernet0/3\n no ip address\n shutdown\n!\nip forward-protocol nd\n!\n!\nno ip http server\nno ip http secure-server\nip route 192.168.1.5 255.255.255.255 192.168.1.4\nip route vrf MGMT 192.168.1.5 255.255.255.255 192.168.1.4\n!\n!\n!\n!\ncontrol-plane\n!\n!\n!\n!\n!\n!\n!\n!\nline con 0\n logging synchronous\nline aux 0\nline vty 0 4\n login local\n transport input all\n!\n!\nend",
+    "net_filesystems": [
+        "system:"
+    ],
+    "net_filesystems_info": {
+        "system:": {}
+    },
+    "net_gather_network_resources": [],
+    "net_gather_subset": [
+        "config",
+        "default",
+        "hardware",
+        "interfaces"
+    ],
+    "net_hostname": "SFO-R",
+    "net_image": "unix:/opt/unetlab/addons/iol/bin/i86bi-linux-l3-adventerprisek9-15.4",
+    "net_interfaces": {
+        "Ethernet0/0": {
+            "bandwidth": 10000,
+            "description": "Connection to Switch Ethernet0/3",
+            "duplex": null,
+            "ipv4": [
+                {
+                    "address": "192.168.1.203",
+                    "subnet": "24"
+                }
+            ],
+            "lineprotocol": "up",
+            "macaddress": "aabb.cc00.3000",
+            "mediatype": null,
+            "mtu": 1500,
+            "operstatus": "up",
+            "type": "AmdP2"
+        },
+        "Ethernet0/1": {
+            "bandwidth": 10000,
+            "description": null,
+            "duplex": null,
+            "ipv4": [],
+            "lineprotocol": "down",
+            "macaddress": "aabb.cc00.3010",
+            "mediatype": null,
+            "mtu": 1500,
+            "operstatus": "administratively down",
+            "type": "AmdP2"
+        },
+        "Ethernet0/2": {
+            "bandwidth": 10000,
+            "description": null,
+            "duplex": null,
+            "ipv4": [],
+            "lineprotocol": "down",
+            "macaddress": "aabb.cc00.3020",
+            "mediatype": null,
+            "mtu": 1500,
+            "operstatus": "administratively down",
+            "type": "AmdP2"
+        },
+        "Ethernet0/3": {
+            "bandwidth": 10000,
+            "description": null,
+            "duplex": null,
+            "ipv4": [],
+            "lineprotocol": "down",
+            "macaddress": "aabb.cc00.3030",
+            "mediatype": null,
+            "mtu": 1500,
+            "operstatus": "administratively down",
+            "type": "AmdP2"
+        }
+    },
+    "net_iostype": "IOS",
+    "net_memfree_mb": 806574.78515625,
+    "net_memtotal_mb": 884993.66015625,
+    "net_neighbors": {
+        "Ethernet0/0": [
+            {
+                "host": "Switch",
+                "platform": "Linux Unix",
+                "port": "Ethernet0/3"
+            }
+        ]
+    },
+    "net_operatingmode": "autonomous",
+    "net_python_version": "3.8.10",
+    "net_serialnum": "67108912",
+    "net_system": "ios",
+    "net_version": "15.4(2)T",
+    "network_resources": {}
+}
