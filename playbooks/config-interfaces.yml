@@ -1,0 +1,15 @@
+---
+- name: "PLAY 1: Set the banner of the device"
+  hosts: device_roles_router
+  tasks:
+    - name: "TASK 1: Configure banner message"
+      ios_config:
+        src: "../templates/interface.j2"
+        save_when: changed
+      notify: config_changed
+
+  handlers:
+    - name: "HANDLER 1: Display devices that were modified"
+      listen: config_changed
+      debug:
+        msg: "{{ cli_result.commands }}"

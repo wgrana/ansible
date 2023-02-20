@@ -1,0 +1,6 @@
+{% for interface in interfaces %}
+interface {{ interface.name }}
+ ip address {{ interface.ip_address }} {{ interface.mask }}
+ description {{ interface.description }}
+ {{ interface.state }}
+{% endfor %}

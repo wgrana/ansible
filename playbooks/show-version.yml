@@ -1,6 +1,6 @@
 ---
 - name: Play #1 - execute show version across platforms
-  hosts: routers
+  hosts: device_roles_router
 
   tasks:
     - name: “IOS - Execute show version"
@@ -10,5 +10,5 @@
 
     - name: print output
       debug:
-        var: output.stdout_lines
+        var: output.stdout_lines[0]
 

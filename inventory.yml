@@ -16,7 +16,7 @@ all:
           ansible_host: 192.168.1.209
         CHI-R:
           ansible_host: 192.168.1.208
-        RDI-R:
+        RDU-R:
           ansible_host: 192.168.1.207
         MIA-R:
           ansible_host: 192.168.1.206

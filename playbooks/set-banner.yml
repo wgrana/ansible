@@ -1,0 +1,12 @@
+---
+- name: "PLAY 1: Set the banner of the device"
+  hosts: device_roles_router
+  tasks:
+    - name: "TASK 1: Configure banner message"
+      ios_config:
+        lines: "banner motd $ ATTENTION! YOU ARE ACCESSING {{ inventory_hostname }}. THIS IS PRIVATE PROPERTY. {{ manufacturers[0] }}-{{ device_types[0] }}:{{ serial }} $"
+      register: output
+
+    - name: "TASK 2: PRINT OUTPUT"
+      debug:
+        var: output.stdout[0]

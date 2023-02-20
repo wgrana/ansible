@@ -1,10 +1,10 @@
 ---
-- name: "PLAY 1: Return configured static routes"
+- name: "PLAY 1: create local backup of device running config"
   hosts: routers
   tasks:
-    - name: "TASK 1: Get configured static routes from router CLI"
+    - name: "TASK 1: Get full config from router CLI"
       ios_command:
-        commands: "show run | s ip route"
+        commands: "show run"
       register: cli_result
     
     - name: "TASK 2: create output directory"
@@ -16,4 +16,4 @@
     - name: "TASK 2: save ip route config to outputs directory"
       copy:
         content: "{{ cli_result.stdout[0] }}\n"
-        dest: "outputs/{{ inventory_hostname }}-iproutes.txt"  
+        dest: "outputs/{{ inventory_hostname }}-full.cfg"  
