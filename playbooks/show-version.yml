@@ -1,8 +1,6 @@
 ---
 - name: Play #1 - execute show version across platforms
   hosts: routers
-  gather_facts: yes
-
 
   tasks:
     - name: “IOS - Execute show version"

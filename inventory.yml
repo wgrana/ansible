@@ -1,0 +1,24 @@
+---
+all:
+  hosts:
+  children:
+    routers:
+      hosts:
+        SEA-R:
+          ansible_host: 192.168.1.201
+        SFO-R:
+          ansible_host: 192.168.1.203
+        CO-R:
+          ansible_host: 192.168.1.204
+        LA-R:
+          ansible_host: 192.168.1.202
+        NYC-R:
+          ansible_host: 192.168.1.209
+        CHI-R:
+          ansible_host: 192.168.1.208
+        RDI-R:
+          ansible_host: 192.168.1.207
+        MIA-R:
+          ansible_host: 192.168.1.206
+        DAL-R:
+          ansible_host: 192.168.1.205
