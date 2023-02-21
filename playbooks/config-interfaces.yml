@@ -1,8 +1,8 @@
 ---
-- name: "PLAY 1: Set the banner of the device"
+- name: "PLAY 1: Configure device interfaces accoridng to hostvars"
   hosts: device_roles_router
   tasks:
-    - name: "TASK 1: Configure banner message"
+    - name: "TASK 1: Configure devices with interface template"
       ios_config:
         src: "../templates/interface.j2"
         save_when: changed
